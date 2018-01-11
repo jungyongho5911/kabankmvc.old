@@ -1,4 +1,4 @@
-package com.kaban.mvc.daoImpl;
+package com.kabank.mvc.daoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
