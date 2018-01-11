@@ -1,6 +1,7 @@
 package com.kabank.mvc.enums;
 
 public enum DMLEnum {
+	WHERE,AND,
 	COUNT{
 @Override
 		public String toString() {
@@ -18,5 +19,37 @@ public enum DMLEnum {
 		public String toString() {
 			return "INSERT INTO ";
 		}
+	},
+	SPACE{
+		@Override
+		public String toString() {
+			return " '%s' ";
+		}
+	},
+	EQUAL{
+		@Override
+		public String toString() {
+			return " = ";
+		}
+	},
+	VALUES{
+		@Override
+		public String toString() {
+			return " ) VALUES ( ";
+		}
+	},
+	PARENTHESES{
+		@Override
+		public String toString() {
+			return " ( ";
+		}	
+	},
+	PARENTHESESCLOSE{
+		@Override
+		public String toString() {
+			return " )";
+		}
 	}
+	
 }
+

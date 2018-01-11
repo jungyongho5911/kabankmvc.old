@@ -41,9 +41,9 @@ public class MemberDaoImpl implements MemberDAO {
 	@Override
 	public void joinMembers(MemberBean member) {
 		StringBuffer buff= new StringBuffer();
-		buff.insert(0, "").append(DMLEnum.INSERT.toString()+TnameEnum.MEMBER+" ( " 
+		buff.insert(0, "").append(DMLEnum.INSERT.toString()+TnameEnum.MEMBER+DMLEnum.PARENTHESES.toString() 
 				+ Enums.getMemberColumn() 
-				+ " )VALUES( " +Enums.getBlanks(1)+" )");
+				+ DMLEnum.VALUES.toString() +Enums.getBlanks(1)+DMLEnum.PARENTHESESCLOSE.toString());
 		try {
 			DataBaseFactory.createDatabase(Vendor.ORACLE)
 					.getConnection()
@@ -60,7 +60,9 @@ public class MemberDaoImpl implements MemberDAO {
 	public MemberBean selectMemberById(MemberBean member) {
 		StringBuffer buff= new StringBuffer(DMLEnum.SELECT.toString());
 		MemberBean mem = null;
-		buff.insert(6," *").append(TnameEnum.MEMBER+" WHERE "+MemberEnum.ID+" = "+"'%s'"+" AND "+MemberEnum.PASS+" = "+"'%s'");
+		buff.insert(6," *").append(TnameEnum.MEMBER
+				+" "+DMLEnum.WHERE+" "+MemberEnum.ID+DMLEnum.EQUAL.toString()
+		+DMLEnum.SPACE.toString()+" "+DMLEnum.AND+" "+MemberEnum.PASS+DMLEnum.EQUAL.toString()+DMLEnum.SPACE.toString());
 		try {
 					rs = DataBaseFactory.createDatabase(Vendor.ORACLE)
 					.getConnection()
