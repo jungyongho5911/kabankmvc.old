@@ -1,16 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %> 
 <%@ page import = "java.util.*" %> 
- <!doctype html>
-<html lang="en">
- <%@ include file="../common/head.jsp" %>
-<link rel="stylesheet" href="../../css/bitcamp.css" /> 
  <body> 
  <%@ include file="../common/header.jsp" %> 
 <%@ include file="../common/nav.jsp" %>
  <section>
   <article>
  	<h1>비트캠프메인</h1>
+  </article>
+  <article>
+  <table style="margin-left: 180px" id="bitcamp_tabla2" >
+  	<tr>
+  		<td rowspan="4"><img src="<%=application.getContextPath() %>/resources/img/images.jpg" style="width : 250px; height:150px" alt=""  /></td>
+  		<td class="column">id</td>
+  		<td class="member">${sessionScope.user.id}</td>
+  		<td class="column">이름</td>
+  		<td class="member">${sessionScope.user.name}</td>
+  	</tr>
+  	<tr>
+  		<td class="column">비밀번호</td>
+  		<td class="member">${sessionScope.user.pass}</td>
+  		<td class="column">생일</td>
+  		<td class="member">${sessionScope.user.ssn}</td>
+  	</tr>
+  	<tr>
+  		<td class="column">phone</td>
+  		<td class="member">${sessionScope.user.phone}</td>
+  		<td class="column">이메일</td>
+  		<td class="member">${sessionScope.user.email}</td>
+  	</tr>
+  	<tr>
+  		<td class="column">성별</td>
+  		<td class="member">${sessionScope.user.ssn}</td>
+  		<td class="column">주소</td>
+  		<td class="member">${sessionScope.user.addr}</td>
+  	</tr>
+  </table>
   </article>
   <article>
   	<table id= "bitcamp_table" >

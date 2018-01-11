@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %> 
 <%@ page import = "java.util.*" %> 
-
-<!doctype html>
-<html lang="en">
-<%@ include file="../common/head.jsp" %>
 <body id="body">
 <div id="wrapper">
 	<header id="main_header">
