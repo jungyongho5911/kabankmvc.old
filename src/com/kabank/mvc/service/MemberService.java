@@ -5,5 +5,6 @@ import com.kabank.mvc.domain.MemberBean;
 public interface MemberService {
 	public MemberBean findMemberById(MemberBean member);
 	public void join(MemberBean member);
+	public MemberBean login();
 
 }

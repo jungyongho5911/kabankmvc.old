@@ -49,6 +49,12 @@ public enum DMLEnum {
 		public String toString() {
 			return " )";
 		}
+	},
+	FULLSTOP{
+		@Override
+		public String toString() {
+			return ",";
+		}
 	}
 	
 }

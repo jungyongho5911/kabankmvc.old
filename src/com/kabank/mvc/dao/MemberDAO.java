@@ -8,5 +8,6 @@ public interface MemberDAO {
 	public List<MemberBean> selectMembers();
 	public void joinMembers(MemberBean member);
 	public MemberBean selectMemberById(MemberBean member);
+	public MemberBean login();
 	
 }

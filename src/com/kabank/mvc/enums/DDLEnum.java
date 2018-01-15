@@ -26,5 +26,5 @@ public enum DDLEnum {
 					+"id VARCHAR2(10)"
 					+")";
 		}
-	};
+	},
 }

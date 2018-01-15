@@ -68,7 +68,7 @@ public class MemberBean {
 	}
 	@Override
 	public String toString() {
-		return "회원종보 [ID:" + id + ", 비밀번호:" + pass + ", 이름:" + name + ", 주민번호(생년월일-첫번째 번호):" + ssn + ", 핸드폰번호:" + phone
+		return "회원정보 [ID:" + id + ", 비밀번호:" + pass + ", 이름:" + name + ", 주민번호(생년월일-첫번째 번호):" + ssn + ", 핸드폰번호:" + phone
 				+ ", 이메일:" + email + ", 프로필사진:" + profile + ", 주소:" + addr + "]";
 	}
 

@@ -14,11 +14,12 @@
 			<table id="index_table">
 		<tr id="first_child">
 			<td colspan="5">
-				<form id="main_go"action="${ctx}/user/auth.do">
+				<form id="main_go"action="${ctx}/user.do">
+				
 					<table id="index_login_box" >					
 			<tr>
 			 		<td> 
-			 		<input id="index_input_id" name="index_input_id" value="aaa" type="text" placeholder="id"/>
+			 		<input id="index_input_id" name="index_input_id" value="" type="text" placeholder="id"/>
 			</td>
 			 	<td rowspan="2">
 				 <button id="index_login_btn">로그인</button>
@@ -26,7 +27,10 @@
 			 </tr>
 			 <tr>
 				<td>
-			 	<input id="index_input_pass" type="text" name="index_input_pass" value="aaa" placeholder="pass"/>
+			 	<input id="index_input_pass" type="text" name="index_input_pass" value="" placeholder="pass"/>
+			 	<input type="hidden" name="cmd" value="login"  />
+			 	<input type="hidden" name="dir" value="bitcamp" />
+			 	<input type="hidden" name="page" value="main" />
 			 	</td >
 			 	</tr>
 		</table>	 	
@@ -48,7 +52,7 @@ document.querySelector('#go_admin_link').addEventListener('click',
 },false);
 document.querySelector('#go_join_link').addEventListener('click',
 		function(){
-	location.href ="${ctx}/user/join.do";
+	location.href ="${ctx}/user.do";
 },false);
 
 document.querySelector('#go_jdbc_link').addEventListener('click',

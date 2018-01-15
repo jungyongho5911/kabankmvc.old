@@ -9,6 +9,7 @@
  	<h1>비트캠프메인</h1>
   </article>
   <article>
+  <form id="change_pass"action="${ctx}/<user class="do"></user>">
   <table style="margin-left: 180px" id="bitcamp_tabla2" >
   	<tr>
   		<td rowspan="4"><img src="<%=application.getContextPath() %>/resources/img/images.jpg" style="width : 250px; height:150px" alt=""  /></td>
@@ -36,6 +37,7 @@
   		<td class="member">${sessionScope.user.addr}</td>
   	</tr>
   </table>
+  </form>
   </article>
   <article>
   	<table id= "bitcamp_table" >
@@ -90,13 +92,23 @@
   		</tr>
   		<tr >
   			<td colspan="6">
-  			<input type="hidden" name="id" value="hong" />
-  			<button id="attend_result">검색</button></td>
+  			<input type="hidden" name="" value="hong" />
+  			<button id="attend_result"><h1>검  색</h1></button>
+  			<input type="hidden" name="" value="hong" />
+  			
+  			<button id="pass_change_btn"><h1>비밀번호변경</h1></button></td>
+  			
   		</tr>
   	</table>
   </article>
  </section>
  <%@ include file="../common/footer.jsp" %> 
  </body>
- <script src="../../js/bitcamp/bitcamp.js"></script>
+ <script>
+ document.querySelector('#pass_change_btn').addEventListener('click',
+			function() {
+	 
+		document.querySelector('#change_pass').submit();
+	},false);
+ </script>
  </html>

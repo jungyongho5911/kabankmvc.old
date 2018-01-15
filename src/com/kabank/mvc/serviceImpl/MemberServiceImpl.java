@@ -12,17 +12,21 @@ public class MemberServiceImpl implements MemberService {
 		return new MemberServiceImpl();
 	}
 	private MemberServiceImpl() {
-		  dao = MemberDaoImpl.getInstance();
+		
 	}
 	@Override
 	public MemberBean findMemberById(MemberBean member) {
-			return dao.selectMemberById(member);
+			return MemberDaoImpl.getInstance().selectMemberById(member);
 		}
 	public void join(MemberBean member) {
-		
-		dao.joinMembers(member);
+		MemberDaoImpl.getInstance().joinMembers(member);
 		System.out.println("================"+member);
 		
 	}
+	@Override
+	public MemberBean login() {
+		return MemberDaoImpl.getInstance().login();
+	}
+	
 }
 

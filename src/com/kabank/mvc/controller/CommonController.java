@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kabank.mvc.enums.PathEnum;
 import com.kabank.mvc.service.CommonService;
 import com.kabank.mvc.serviceImpl.CommonServiceImpl;
-@WebServlet("/common/jdbc_test.do")
+@WebServlet("/common.do")
 public class CommonController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		CommonService service;
