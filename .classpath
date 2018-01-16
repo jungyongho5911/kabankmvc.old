@@ -17,5 +17,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/1027/jse/eclipse/enterprise-edition/jakarta-taglibs-standard-1.1.2/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/1027/jse/eclipse/enterprise-edition/jakarta-taglibs-standard-1.1.2/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/1027/jse/eclipse/enterprise-edition/javax.servlet-3.1.jar/javax.servlet-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/1027/Downloads/lombok.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

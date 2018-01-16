@@ -12,7 +12,7 @@ import com.kabank.mvc.enums.MemberEnum;
 import com.kabank.mvc.enums.TnameEnum;
 import com.kabank.mvc.enums.Vendor;
 import com.kabank.mvc.factory.DataBaseFactory;
-import com.kabank.mvc.factory.SqlFcatory;
+import com.kabank.mvc.factory.SqlFactory;
 import com.kabank.mvc.util.Enums;
 
 public class MemberDaoImpl implements MemberDAO {
@@ -25,7 +25,7 @@ public class MemberDaoImpl implements MemberDAO {
 		try {
 			rs =DataBaseFactory.create(Vendor.ORACLE)
 					.getConnection()
-					.createStatement().executeQuery(SqlFcatory.create(6," ", 
+					.createStatement().executeQuery(SqlFactory.create(6," ", 
 							MemberEnum.
 							ID+DMLEnum.FULLSTOP.toString()
 							+MemberEnum.PASS+" "+TnameEnum.MEMBER));
@@ -41,18 +41,18 @@ public class MemberDaoImpl implements MemberDAO {
 		return list;
 	}
 	@Override
-	public void joinMembers(MemberBean member) {
+	public void joinMembers() {
 		StringBuffer buff= new StringBuffer();
+		String[] arr = InitCommand.cmd.getData().split(",");
+		System.out.println("#############arr[0]"+arr[0]);
 		buff.insert(0, "").append(DMLEnum.INSERT.toString()+TnameEnum.MEMBER+DMLEnum.PARENTHESES.toString() 
 				+ Enums.getMemberColumn() 
 				+ DMLEnum.VALUES.toString() +Enums.getBlanks(1)+DMLEnum.PARENTHESESCLOSE.toString());
 		try {
 			DataBaseFactory.create(Vendor.ORACLE)
-					.getConnection()
-					.createStatement()
-					.executeUpdate(String.format(buff.toString(),
-							member.getId(), member.getPass(), member.getName(), member.getSsn(), member.getPhone(),
-							member.getEmail(), member.getProfile(), member.getAddr()));
+			.getConnection()
+			.createStatement()
+			.executeUpdate(String.format(buff.toString(), arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]));
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -130,6 +130,49 @@ public class MemberDaoImpl implements MemberDAO {
 		}
 		System.out.println("==============MEMBER-D : LOGIN OUT===========");
 		return member;
+	}
+	@Override
+	public void updatePass(MemberBean member) {
+		System.out.println("==========memberupdatePassIn");
+		System.out.println("memberupdatePass member = "+ member.getPass());
+		System.out.println("memberupdatePass :"+InitCommand.cmd.getData());
+		StringBuffer sql = new StringBuffer(
+				DMLEnum.UPDATE_PASSWORD.toString());
+		String foo = InitCommand.cmd.getData();
+		sql.replace(sql.indexOf("$"), sql.indexOf("$")+1,member.getId());
+		sql.replace(sql.indexOf("@"), sql.indexOf("@")+1,foo );
+		System.out.println(member.getId()+"AAAAAAAAAAAAAAAAAAAAAAAAA");
+		System.out.println("선언한 sql = " + sql);
+		try {
+			 		ResultSet rs = DataBaseFactory.create(Vendor.ORACLE)
+					.getConnection()
+					.createStatement()
+					.executeQuery(sql.toString());
+			 		while(rs.next()) {
+			 			member = new MemberBean();
+			 			member.setPass(rs.getString(MemberEnum.PASS.toString()));
+			 		}
+			 		System.out.println("memberupdatePass member = "+ member.getPass());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("==========memberupdatePassout");
+	}
+	@Override
+	public void leaveMember() {
+		System.out.println("leaveMemberImpl+++++++++진입");
+		StringBuffer sql = new StringBuffer(DMLEnum.DELETE_MEMBER.toString()); 
+		sql.replace(sql.indexOf("@"), sql.indexOf("@")+1,InitCommand.cmd.getData() );
+		try {
+	 		 DataBaseFactory.create(Vendor.ORACLE)
+			.getConnection()
+			.createStatement()
+			.executeQuery(sql.toString());
+}catch(Exception e) {
+	e.printStackTrace();
+}
+		
 	}
 
 }

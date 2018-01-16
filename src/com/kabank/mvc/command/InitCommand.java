@@ -18,7 +18,7 @@ public class InitCommand implements IOrder {
 	}
 	
 	@Override
-	public void execute() {
+	public void execute() {	
 		String o = String.valueOf(map.get("cmd"));
 		System.out.println("InitCommand o : " + o );
 		if(o.equals("null")) {
@@ -26,6 +26,7 @@ public class InitCommand implements IOrder {
 		}
 		cmd.setAction(ActionFactory.create(o));
 		System.out.println("InitCommand cmd : " + cmd.getAction());
+		System.out.println("InitCommand cmd : " + cmd.getData());
 	}
 }
 	

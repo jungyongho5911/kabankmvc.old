@@ -18,15 +18,19 @@ public class MemberServiceImpl implements MemberService {
 	public MemberBean findMemberById(MemberBean member) {
 			return MemberDaoImpl.getInstance().selectMemberById(member);
 		}
-	public void join(MemberBean member) {
-		MemberDaoImpl.getInstance().joinMembers(member);
-		System.out.println("================"+member);
-		
+	public void joinMember() {
+		MemberDaoImpl.getInstance().joinMembers();
 	}
 	@Override
 	public MemberBean login() {
 		return MemberDaoImpl.getInstance().login();
 	}
-	
+	public void changePass(MemberBean member) {
+		MemberDaoImpl.getInstance().updatePass(member);
+	}
+	public void leaveMember() {
+		MemberDaoImpl.getInstance().leaveMember();
+		
+	}
 }
 

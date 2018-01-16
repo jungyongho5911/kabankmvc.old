@@ -13,9 +13,11 @@ import com.kabank.mvc.enums.OracleEnum;
 public class AdminDaoImpl implements AdminDAO {
 	@Override
 	public List<String> creatTable(String tname) {
+		System.out.println("########### tname" + tname);
 			List<String> list = new ArrayList<>();
 		try {
-			Connection conn = DriverManager.getConnection(OracleEnum.ORACLE_CONNECTION_URL.toString(),OracleEnum.ORACLE_USERNAME.toString(),OracleEnum.ORACLE_PASSWORD.toString());
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","bitcamp","bitcamp");
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM tab");
 			while(rs.next()) {
@@ -34,6 +36,9 @@ public class AdminDaoImpl implements AdminDAO {
 					stmt.executeUpdate(DDLEnum.CREATE_TABLE_MEMBER.toString());
 				}else if(tname.equalsIgnoreCase("attend")) {
 					stmt.executeUpdate(DDLEnum.CREATE_TABLE_ATTEND.toString());	
+				}else if(tname.equalsIgnoreCase("bank")) {
+					stmt.executeUpdate(DDLEnum.CREATE_TABLE_BANK.toString());
+					
 				}
 			}
 		} catch (Exception e) {

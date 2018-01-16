@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kabank.mvc.command.ChangeCommand;
 import com.kabank.mvc.command.InitCommand;
+import com.kabank.mvc.command.JoinCommand;
+import com.kabank.mvc.command.LeaveCommand;
 import com.kabank.mvc.command.LoginCommand;
 import com.kabank.mvc.command.MoveCommand;
 import com.kabank.mvc.domain.MemberBean;
@@ -24,8 +27,8 @@ public class MemberController extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("체인지 패스에서 넘어온 cmd값은: "+request.getParameter("cmd"));
 		MemberBean member = new MemberBean();
-		MemberService memberService = MemberServiceImpl.getInstance();
 		HttpSession session = request.getSession();
 		InitCommand init = new InitCommand(request);
 		init.execute();
@@ -55,17 +58,42 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response); break;
 		case ADD:
 			System.out.println("==============MEMBER : ADD IN===========");
-			member.setId(request.getParameter(MemberEnum.ID.toString()));
-			member.setPass(request.getParameter(MemberEnum.PASS.toString()));
-			member.setName(request.getParameter(MemberEnum.NAME.toString()));
-			member.setEmail(request.getParameter(MemberEnum.EMAIL.toString()));
-			member.setSsn(request.getParameter(MemberEnum.SSN.toString()));
-			member.setPhone(request.getParameter(MemberEnum.PHONE.toString()));
-			member.setAddr(request.getParameter(MemberEnum.ADDR.toString()));
-			member.setProfile(request.getParameter(MemberEnum.PROFILE.toString()));
-			memberService.join(member);
+		
 			System.out.println("==============MEMBER : ADD OUT===========");
 			break;
+		case CHANGE_PASS:
+			System.out.println("==============MEMBER-C : CHANGE IN===========");
+			member = new MemberBean();
+			new ChangeCommand(request).execute();
+			System.out.println("변경할 비밀번호는??:"+InitCommand.cmd.getData());
+			member.setId(((MemberBean) session.getAttribute("user")).getId());
+			member.setPass(InitCommand.cmd.getData());
+			MemberServiceImpl.getInstance().changePass(member);
+			member=(MemberBean) session.getAttribute("user");
+			session.setAttribute("user", member);
+			System.out.println("변경확인");
+			System.out.println(member.toString());
+			new MoveCommand(request).execute();
+			System.out.println("DEST IS"+ InitCommand.cmd.getView());
+			System.out.println("==============MEMBER-C : CHANGE OUT===========");
+			DispatcherServlet.send(request, response);
+			break;
+		case LEAVE:
+			System.out.println("==============MEMBER-C : LEAVE IN===========");	
+			new LeaveCommand(request).execute();
+			MemberServiceImpl.getInstance().leaveMember();
+			session.invalidate();
+			new MoveCommand(request).execute();
+			DispatcherServlet.send(request, response);
+			System.out.println("==============MEMBER-C : LEAVE OUT===========");	
+			break;
+		case JOIN:
+			System.out.println("==============MEMBER-C : JOIN IN===========");
+			new JoinCommand(request).execute();
+			MemberServiceImpl.getInstance().joinMember();
+			new MoveCommand(request).execute();
+			DispatcherServlet.send(request, response);
+			System.out.println("==============MEMBER-C : JOIN OUT===========");
 		default:
 			break;
 		}

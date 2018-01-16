@@ -55,7 +55,18 @@ public enum DMLEnum {
 		public String toString() {
 			return ",";
 		}
-	}
-	
+	},
+	UPDATE_PASSWORD{
+		@Override
+		public String toString() {
+			return "UPDATE Member SET pass = '@' WHERE id='$'";
+		}
+	},
+	DELETE_MEMBER{
+		@Override
+		public String toString() {
+			return "DELETE FROM Member WHERE id = '@'";
+		}
+	}	
 }
 

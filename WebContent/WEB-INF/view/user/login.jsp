@@ -52,12 +52,11 @@ document.querySelector('#go_admin_link').addEventListener('click',
 },false);
 document.querySelector('#go_join_link').addEventListener('click',
 		function(){
-	location.href ="${ctx}/user.do";
+	location.href ="${ctx}/user.do?cmd=move&page=join";
 },false);
 
 document.querySelector('#go_jdbc_link').addEventListener('click',
 		function () {
-	location.href="${ctx}/common/jdbc_test.do"
 },false);
 document.querySelector('#index_login_btn').addEventListener('click',
 		function() {

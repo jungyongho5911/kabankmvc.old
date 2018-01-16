@@ -1,7 +1,5 @@
 package com.kabank.mvc.util;
 
-import java.util.HashMap;
-
 public class Enums {
 	public enum MemberColumn {
 		//끝에 세미콜론(;) 찎으면 안된다.

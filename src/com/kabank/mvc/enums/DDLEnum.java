@@ -27,4 +27,16 @@ public enum DDLEnum {
 					+")";
 		}
 	},
+	CREATE_TABLE_BANK{
+		@Override
+		public String toString() {
+			return "CREATE TABLE Bank("
+					+"customNum VARCHAR2(20) PRIMARY KEY,"
+					+"accountNum VARCHAR2(20),"
+					+"money VARCHAR2(20),"
+					+"id VARCHAR2(20),"
+					+"FOREIGN KEY(id) REFERENCES Member(id) ON DELETE CASCADE"
+					+ ")";
+		}
+	}
 }

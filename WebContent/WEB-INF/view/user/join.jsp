@@ -9,7 +9,7 @@
  		</hgroup>
  	</header>
  	 <article>
- 	<form  id="join_form" action="<%=application.getContextPath() %>/user/signup.do">
+ 	<form  id="join_form" action="${ctx}/user.do">
  		<table  style="margin: 0 auto" id="member_table" >
  			<tr >
  				<td> id : <input  id="join_id" name="id"type="text" />
@@ -35,18 +35,18 @@
  			</tr>
  			<tr>
  			<tr>
- 				<td>주민번호 :<input type="text" name="ssn" />- <input type="text" placeholder="" name="ssn" /></td>
+ 				<td>주민번호 :<input type="text" name="ssn" /></td>
  			</tr>
  			<tr>
  				<td>
- 				<input type="radio" name="phone" /> SKT
- 				<input type="radio" name="phone" /> LG
- 				<input type="radio" name="phone" /> KT<br/>
+ 				<input type="radio"  /> SKT
+ 				<input type="radio"  /> LG
+ 				<input type="radio"  /> KT<br/>
  				- 핸드폰번호 :
  				<select>
  				<option>010</option>
  				</select>
- 				<input pattern="[0-9]{4}" type="tel" name="phone"/> -  <input pattern="[0-9]{4}" type="tel" name="phone" />
+ 				<input pattern="[0-9]{4}" type="tel" name="phone"/> -  <input pattern="[0-9]{4}" type="tel" />
  				</td>
  			</tr>
  			<tr>
@@ -56,6 +56,9 @@
  			</tr>
  			<tr>
  			<td colspan = "2"> 
+ 				<input type="hidden" name="cmd" value="join" />
+				<input type="hidden" name="dir" value="user" />
+				<input type="hidden" name="page" value="login" />
  				<button  id="join_confirm_btn"style="width: 160px; height: 30px">회원가입</button> 
  				<button style="width: 160px; height: 30px">취소</button>
  			</td>
@@ -68,9 +71,9 @@
  <%@ include file="../common/footer.jsp" %>
 </body>
 <script>
-	document.querySelector('#join_confirm_btn').addEventListener('click',login,false);
-	function login() {
-		documnet.querySelector('#join_form').submit();
-	}
+	document.querySelector('#join_confirm_btn').addEventListener('click',
+			function () {
+		documnet.querySelector('#join_form').submit();		
+			},false);
 </script> 
 </html> 

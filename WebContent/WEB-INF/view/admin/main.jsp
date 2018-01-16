@@ -33,6 +33,7 @@
 					<select name="table_name" id="table_name">
 						<option id="option" value="member"> 회원테이블 </option>
 						<option id="option"value="attend" >출석테이블 </option>
+						<option id="option"value="bank" >뱅크테이블 </option>
 					</select>
 					<button id="admin_create_btn"> 생 성 </button>
 				</form>  
