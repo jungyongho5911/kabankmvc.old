@@ -67,6 +67,12 @@ public enum DMLEnum {
 		public String toString() {
 			return "DELETE FROM Member WHERE id = '@'";
 		}
-	}	
+	},
+	ACCOUNT_NUMBER{
+		@Override
+		public String toString() {
+			return "INSERT INTO Bank ( accountNum,customNum,id,money ) VALUES ( '%s','%d','%s','%s' )";
+		}
+	}
 }
 

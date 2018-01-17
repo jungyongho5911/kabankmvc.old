@@ -42,12 +42,14 @@ public class MemberDaoImpl implements MemberDAO {
 	}
 	@Override
 	public void joinMembers() {
+		
 		StringBuffer buff= new StringBuffer();
 		String[] arr = InitCommand.cmd.getData().split(",");
 		System.out.println("#############arr[0]"+arr[0]);
 		buff.insert(0, "").append(DMLEnum.INSERT.toString()+TnameEnum.MEMBER+DMLEnum.PARENTHESES.toString() 
 				+ Enums.getMemberColumn() 
 				+ DMLEnum.VALUES.toString() +Enums.getBlanks(1)+DMLEnum.PARENTHESESCLOSE.toString());
+		System.out.println("######################"+buff);
 		try {
 			DataBaseFactory.create(Vendor.ORACLE)
 			.getConnection()

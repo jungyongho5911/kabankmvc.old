@@ -18,6 +18,10 @@ public class ActionFactory {
 			action = Action.LEAVE;break;
 		case "join":
 			action = Action.JOIN;break;	
+		case "account":
+			action = Action.ACCOUNT;break;
+		case "kakao":
+			action = Action.KAKAO_MAIN;break;
 		default:
 			action = Action.MOVE;break;
 		}

@@ -29,8 +29,7 @@
 				<td>
 			 	<input id="index_input_pass" type="text" name="index_input_pass" value="" placeholder="pass"/>
 			 	<input type="hidden" name="cmd" value="login"  />
-			 	<input type="hidden" name="dir" value="bitcamp" />
-			 	<input type="hidden" name="page" value="main" />
+			 	<input type="hidden" name="page" value="mypage" />
 			 	</td >
 			 	</tr>
 		</table>	 	

@@ -16,8 +16,6 @@ import com.kabank.mvc.command.LeaveCommand;
 import com.kabank.mvc.command.LoginCommand;
 import com.kabank.mvc.command.MoveCommand;
 import com.kabank.mvc.domain.MemberBean;
-import com.kabank.mvc.enums.MemberEnum;
-import com.kabank.mvc.service.MemberService;
 import com.kabank.mvc.serviceImpl.MemberServiceImpl;
 import com.kabank.mvc.util.DispatcherServlet;
 
@@ -56,11 +54,6 @@ public class MemberController extends HttpServlet {
 			new MoveCommand(request).execute();
 			System.out.println("==============MEMBER : LOGIN OUT===========");
 			DispatcherServlet.send(request, response); break;
-		case ADD:
-			System.out.println("==============MEMBER : ADD IN===========");
-		
-			System.out.println("==============MEMBER : ADD OUT===========");
-			break;
 		case CHANGE_PASS:
 			System.out.println("==============MEMBER-C : CHANGE IN===========");
 			member = new MemberBean();
