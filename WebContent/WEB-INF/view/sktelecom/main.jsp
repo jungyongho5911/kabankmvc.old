@@ -6,9 +6,21 @@
  <article>
  <p>SKT메인</p>
  </article>
+ <article>
+ <table>
+ <tr>
+ <td><button id="phone_create_btn">폰번호생성</button></td>
+ <td><button>날짜생성</button></td>
+ </tr>
+ </table>
+ </article>
  </section>
- <aside></aside>
  <%@ include file="../common/footer.jsp" %>  
  </body>
- <script src="../../js/sktelecom/main.js"></script>
+ <script>
+ document.querySelector('#phone_create_btn').addEventListener('click',
+		 function () {
+	location.href = "${ctx}/phone.do?cmd=phone_numbur&dir=user&page=mypage";
+		},false)
+ </script>
  </html>

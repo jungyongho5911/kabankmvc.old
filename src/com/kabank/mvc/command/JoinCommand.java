@@ -16,7 +16,6 @@ public class JoinCommand implements IOrder {
 		map = ParamsIterator.excute(request);
 		go = request.getServletPath();
 		session = request.getSession();
-		
 	}
 
 	@Override
@@ -34,10 +33,14 @@ public class JoinCommand implements IOrder {
 					);
 			break;
 		case"/kakao.do":
+			System.out.println("kakao.do로 들어옴");
 			InitCommand.cmd.setData(((MemberBean)session.getAttribute("user")).getId());
 			break;
+		case"/phone.do":
+			InitCommand.cmd.setData(((MemberBean)session.getAttribute("user")).getId());
+			System.out.println("phone.do로 들어옴");
+			break;
 		}
-		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%"+InitCommand.cmd.getData());
 	}
 	

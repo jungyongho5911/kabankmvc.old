@@ -9,10 +9,14 @@ import java.util.List;
 
 import com.kabank.mvc.dao.AdminDAO;
 import com.kabank.mvc.enums.DDLEnum;
-import com.kabank.mvc.enums.OracleEnum;
 public class AdminDaoImpl implements AdminDAO {
+	public static AdminDAO getInstance() {
+		return new AdminDaoImpl();
+	}
+	private AdminDaoImpl() {
+	}
 	@Override
-	public List<String> creatTable(String tname) {
+	public List<String> creatTables(String tname) {
 		System.out.println("########### tname" + tname);
 			List<String> list = new ArrayList<>();
 		try {
@@ -32,13 +36,15 @@ public class AdminDaoImpl implements AdminDAO {
 				}
 			}
 			if(flag) {
+				System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 				if(tname.equalsIgnoreCase("member")) {
 					stmt.executeUpdate(DDLEnum.CREATE_TABLE_MEMBER.toString());
 				}else if(tname.equalsIgnoreCase("attend")) {
 					stmt.executeUpdate(DDLEnum.CREATE_TABLE_ATTEND.toString());	
 				}else if(tname.equalsIgnoreCase("bank")) {
 					stmt.executeUpdate(DDLEnum.CREATE_TABLE_BANK.toString());
-					
+				}else if(tname.equalsIgnoreCase("phone")) {
+					stmt.executeUpdate(DDLEnum.CREATE_TABLE_SKT.toString());
 				}
 			}
 		} catch (Exception e) {
@@ -50,4 +56,6 @@ public class AdminDaoImpl implements AdminDAO {
 		return list;
 		
 	}
+
+	
 }

@@ -34,7 +34,7 @@
   	</tr>
   		<tr>
   		<td class="column">ACCOUNT</td>
-  		<td class="member">1234-5678-1234</td>
+  		<td class="member">${sessionScope.user.account.accountNum} </td>
   		<td class="column">CUSTOMNUM</td>
   		<td class="member">1000</td>
   	</tr>

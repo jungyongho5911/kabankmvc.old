@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface AdminDAO {
 
-	public List<String> creatTable(String tname);
+	public List<String> creatTables(String tname);
 }

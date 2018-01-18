@@ -1,7 +1,7 @@
 package com.kabank.mvc.enums;
 
 public enum TnameEnum {
-	MEMBER, ATTEND,
+	MEMBER, ATTEND,BANK,
 	TNAMES{
 @Override
 		public String toString() {

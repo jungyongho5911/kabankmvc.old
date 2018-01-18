@@ -16,6 +16,7 @@ import com.kabank.mvc.command.LeaveCommand;
 import com.kabank.mvc.command.LoginCommand;
 import com.kabank.mvc.command.MoveCommand;
 import com.kabank.mvc.domain.MemberBean;
+import com.kabank.mvc.serviceImpl.KakaoServiceImpl;
 import com.kabank.mvc.serviceImpl.MemberServiceImpl;
 import com.kabank.mvc.util.DispatcherServlet;
 
@@ -45,9 +46,17 @@ public class MemberController extends HttpServlet {
 			if (member==null) {
 				InitCommand.cmd.setDir("user");
 				InitCommand.cmd.setPage("login");
-				
 			}else {
-				session.setAttribute("user", member);
+				System.out.println("==========로그인 성공==========");
+				InitCommand.cmd.setData(member.getId());
+				MemberBean memberwithAccount = KakaoServiceImpl.getInstance().findAccount(member.getId());
+				if(memberwithAccount==null) {
+					System.out.println("계좌거없는 맴버");
+					session.setAttribute("user", member);
+				}else {
+					System.out.println("계좌거있는 맴버");
+					session.setAttribute("user", memberwithAccount);
+				}
 				InitCommand.cmd.setDir("bitcamp");
 				InitCommand.cmd.setPage("main");
 			}
@@ -97,9 +106,5 @@ public class MemberController extends HttpServlet {
 		new MoveCommand(request).execute();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
 
 }

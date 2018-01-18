@@ -22,6 +22,10 @@ public class ActionFactory {
 			action = Action.ACCOUNT;break;
 		case "kakao":
 			action = Action.KAKAO_MAIN;break;
+		case "phone":
+			action = Action.PHONE_MAIN;break;
+		case"phone_numbur":
+			action = Action.CREATE_PHONE_NUM;break;
 		default:
 			action = Action.MOVE;break;
 		}

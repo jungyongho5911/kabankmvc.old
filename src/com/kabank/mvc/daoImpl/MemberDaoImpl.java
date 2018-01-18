@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.kabank.mvc.command.InitCommand;
 import com.kabank.mvc.dao.MemberDAO;
+import com.kabank.mvc.decorate.ExecuteQuery;
 import com.kabank.mvc.domain.MemberBean;
 import com.kabank.mvc.enums.DMLEnum;
 import com.kabank.mvc.enums.MemberEnum;
@@ -13,6 +14,7 @@ import com.kabank.mvc.enums.TnameEnum;
 import com.kabank.mvc.enums.Vendor;
 import com.kabank.mvc.factory.DataBaseFactory;
 import com.kabank.mvc.factory.SqlFactory;
+import com.kabank.mvc.query.member.LoginQuery;
 import com.kabank.mvc.util.Enums;
 
 public class MemberDaoImpl implements MemberDAO {
@@ -99,7 +101,9 @@ public class MemberDaoImpl implements MemberDAO {
 	}
 	@Override
 	public MemberBean login() {
-		System.out.println("==============MEMBER-D : LOGIN IN===========");
+		return (MemberBean) new ExecuteQuery(new LoginQuery()).execute();
+	
+		/*System.out.println("==============MEMBER-D : LOGIN IN===========");
 		System.out.println("==============MEMBER-D :"+InitCommand.cmd.getData());
 		StringBuffer sql = new StringBuffer(
 				MemberEnum.LOGIN.toString());
@@ -131,7 +135,8 @@ public class MemberDaoImpl implements MemberDAO {
 			e.printStackTrace();
 		}
 		System.out.println("==============MEMBER-D : LOGIN OUT===========");
-		return member;
+		return member;*/
+	
 	}
 	@Override
 	public void updatePass(MemberBean member) {

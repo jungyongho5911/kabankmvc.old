@@ -33,10 +33,22 @@ public enum DDLEnum {
 			return "CREATE TABLE Bank("
 					+"customNum VARCHAR2(20) PRIMARY KEY,"
 					+"accountNum VARCHAR2(20),"
-					+"money VARCHAR2(20),"
+					+"money VARCHAR2(20) default 0,"
 					+"id VARCHAR2(20),"
 					+"FOREIGN KEY(id) REFERENCES Member(id) ON DELETE CASCADE"
 					+ ")";
 		}
+	},
+	CREATE_TABLE_SKT{
+        @Override
+        public String toString() {
+            return "CREATE TABLE Phone("
+                    +"customer_num number primary key,"
+                    +"phone varchar2(20) not null,"
+                    +"regdate date default sysdate,"
+                    +"id varchar2(20),"
+                    +"foreign key (id) references Member(id) on delete cascade"
+                    +")";
+        }
 	}
 }

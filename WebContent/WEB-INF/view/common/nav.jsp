@@ -8,7 +8,7 @@
 			<li>
 			<a id="bitcamp" href="#" >비트캠프</a></li>
 			<li>
-			<a id="sktelecom" href="#" >에스케이텔레콤</a></li>
+			<a id="sktelecom"href="${ctx}/phone.do?cmd=phone&dir=sktelecom&page=main" >에스케이텔레콤</a></li>
 			<li>
 			<a  id="lotto" href="#" >로또</a></li>
 			<li>
@@ -17,4 +17,10 @@
 			<a id=""href="#">로그아웃</a></li>
 		</ul>
 </nav>	
+<script>
+document.querySelector('#kakao').addEventListener('click',
+		function(){
+	location.href="${ctx}/kakao.do?cmd=move&page=main";
+},false);
+</script>
 			
