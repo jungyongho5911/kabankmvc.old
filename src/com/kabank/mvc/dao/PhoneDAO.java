@@ -1,7 +1,11 @@
 package com.kabank.mvc.dao;
 
-public interface PhoneDAO {
+import com.kabank.mvc.domain.MemberBean;
 
-	public void createPhoneNum();
+public interface PhoneDAO {
+	
+	public void createPhoneNum(String result);
+
+	public MemberBean selectById(String id);
 
 }

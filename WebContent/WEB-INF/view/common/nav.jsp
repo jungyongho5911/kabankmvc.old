@@ -14,7 +14,7 @@
 			<li>
 			<a id=""href="#">마이페이지</a></li>
 			<li>
-			<a id=""href="#">로그아웃</a></li>
+			<a id="logout"href="${ctx}/user.do?cmd=logout">로그아웃</a></li>
 		</ul>
 </nav>	
 <script>

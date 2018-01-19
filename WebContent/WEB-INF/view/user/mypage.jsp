@@ -8,7 +8,7 @@
   <article>
   <table style="margin-left: 180px" id="bitcamp_tabla2" >
   	<tr>
-  		<td rowspan="5"><img src="<%=application.getContextPath() %>/resources/img/images.jpg" style="width : 250px; height:150px" alt=""  /></td>
+  		<td rowspan="6"><img src="<%=application.getContextPath() %>/resources/img/images.jpg" style="width : 250px; height:250px" alt=""  /></td>
   		<td class="column">id</td>
   		<td class="member">${sessionScope.user.id}</td>
   		<td class="column">이름</td>
@@ -34,9 +34,15 @@
   	</tr>
   		<tr>
   		<td class="column">ACCOUNT</td>
-  		<td class="member">${sessionScope.user.account.accountNum} </td>
+  		<td class="member">${sessionScope.user.account.accountnum} </td>
   		<td class="column">CUSTOMNUM</td>
-  		<td class="member">1000</td>
+  		<td class="member">${sessionScope.user.account.customnum}</td>
+  	</tr>
+  		<tr>
+  		<td class="column">폰넘버</td>
+  		<td class="member">${sessionScope.user.phoneBean.phoneNumber} </td>
+  		<td class="column">개통날짜</td>
+  		<td class="member">${sessionScope.user.phoneBean.regdate}</td>
   	</tr>
   	<tr >
   			<td colspan="6">

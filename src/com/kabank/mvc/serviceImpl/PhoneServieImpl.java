@@ -1,7 +1,7 @@
 package com.kabank.mvc.serviceImpl;
 
-import com.kabank.mvc.command.InitCommand;
 import com.kabank.mvc.daoImpl.PhoneDaoImpl;
+import com.kabank.mvc.domain.MemberBean;
 import com.kabank.mvc.service.PhoneService;
 
 public class PhoneServieImpl implements PhoneService {
@@ -10,10 +10,15 @@ public class PhoneServieImpl implements PhoneService {
 	}
 	@Override
 	public void createNum() {
-		InitCommand.cmd.setData("010"+"-"+String.valueOf(String.format(
+		String result = ("010"+"-"+String.valueOf(String.format(
 				"%04d", (int) (Math.random()*10000)))+"-"+
 				String.valueOf(String.format(
 				"%04d", (int) (Math.random()*10000))));
-		PhoneDaoImpl.getInstance().createPhoneNum();
+		PhoneDaoImpl.getInstance().createPhoneNum(result);
 	}
+	@Override
+	public MemberBean findPhone(String id) {
+		return PhoneDaoImpl.getInstance().selectById(id);
+	}
+
 }

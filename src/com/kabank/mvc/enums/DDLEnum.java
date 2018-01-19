@@ -11,7 +11,7 @@ public enum DDLEnum {
 					+"ssn VARCHAR2(20),"
 					+"phone VARCHAR2(20),"
 					+"email VARCHAR2(20),"
-					+"profile VARCHAR2(20),"
+					+"profile VARCHAR2(20) default 0,"
 					+"addr VARCHAR2(20)"
 						+")";
 		}
@@ -31,8 +31,8 @@ public enum DDLEnum {
 		@Override
 		public String toString() {
 			return "CREATE TABLE Bank("
-					+"customNum VARCHAR2(20) PRIMARY KEY,"
-					+"accountNum VARCHAR2(20),"
+					+"customer_num number PRIMARY KEY,"
+					+"account_num VARCHAR2(20),"
 					+"money VARCHAR2(20) default 0,"
 					+"id VARCHAR2(20),"
 					+"FOREIGN KEY(id) REFERENCES Member(id) ON DELETE CASCADE"
@@ -43,8 +43,8 @@ public enum DDLEnum {
         @Override
         public String toString() {
             return "CREATE TABLE Phone("
-                    +"customer_num number primary key,"
-                    +"phone varchar2(20) not null,"
+                    +"customers_num number primary key,"
+                    +"phone_num varchar2(20) not null,"
                     +"regdate date default sysdate,"
                     +"id varchar2(20),"
                     +"foreign key (id) references Member(id) on delete cascade"

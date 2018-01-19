@@ -26,6 +26,8 @@ public class ActionFactory {
 			action = Action.PHONE_MAIN;break;
 		case"phone_numbur":
 			action = Action.CREATE_PHONE_NUM;break;
+		case "logout":
+			action = Action.LOGOUT;break;
 		default:
 			action = Action.MOVE;break;
 		}

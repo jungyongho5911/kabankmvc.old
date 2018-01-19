@@ -22,11 +22,13 @@ public class KakaoDaoImpl implements KakaoDAO {
 		StringBuffer sql = new StringBuffer( DMLEnum.ACCOUNT_NUMBER.toString());
 		String foo = InitCommand.cmd.getData();
 		System.out.println("accountNumbers foo = "+foo);
+		System.out.println("accountNumbers account = "+account);
+		System.out.println();
 		try {
 		DataBaseFactory.create(Vendor.ORACLE)
 		.getConnection()
 		.createStatement()
-		.executeUpdate(String.format(sql.toString(),"custom_Num.nextval",account,"10000",foo));
+		.executeUpdate(String.format(sql.toString(), account, "10000", foo));
 		
 	} catch (Exception e) {
 		e.printStackTrace();

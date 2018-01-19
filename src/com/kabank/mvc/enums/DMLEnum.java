@@ -71,14 +71,13 @@ public enum DMLEnum {
 	ACCOUNT_NUMBER{
 		@Override
 		public String toString() {
-			return "INSERT INTO Bank ( customNum,accountNum,money,id ) VALUES ( '%s','%s','%s','%s' )";
+			return "INSERT INTO Bank ( customer_num,account_num,money,id ) VALUES ( customer_num.nextval,'%s','%s','%s' )";
 		}
 	},
 	PHONE_NUMBER{
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
-			return super.toString();
+			return"INSERT INTO Phone ( customers_num,phone_num,regdate,id ) VALUES ( customers_num.nextval,'%s',sysdate,'%s' )";
 		}
 	}
 	

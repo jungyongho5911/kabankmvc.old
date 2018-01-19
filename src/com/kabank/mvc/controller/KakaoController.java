@@ -6,9 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.kabank.mvc.command.InitCommand;
 import com.kabank.mvc.command.JoinCommand;
 import com.kabank.mvc.command.MoveCommand;
+import com.kabank.mvc.domain.MemberBean;
 import com.kabank.mvc.serviceImpl.KakaoServiceImpl;
 import com.kabank.mvc.util.DispatcherServlet;
 
@@ -20,6 +23,7 @@ public class KakaoController extends HttpServlet {
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 		System.out.println("카카오 컨트롤러 들어옴");
 		new InitCommand(request).execute();
 		switch(InitCommand.cmd.getAction()) {

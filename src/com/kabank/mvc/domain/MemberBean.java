@@ -6,6 +6,7 @@ import lombok.Data;
 public class MemberBean {
 	private String id,pass,name,ssn,phone,email,profile,addr;
 	private AccountBean account;
+	private PhoneBean phoneBean;
 
 	
 	@Override

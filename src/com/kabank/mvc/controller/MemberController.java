@@ -16,8 +16,10 @@ import com.kabank.mvc.command.LeaveCommand;
 import com.kabank.mvc.command.LoginCommand;
 import com.kabank.mvc.command.MoveCommand;
 import com.kabank.mvc.domain.MemberBean;
+import com.kabank.mvc.domain.PhoneBean;
 import com.kabank.mvc.serviceImpl.KakaoServiceImpl;
 import com.kabank.mvc.serviceImpl.MemberServiceImpl;
+import com.kabank.mvc.serviceImpl.PhoneServieImpl;
 import com.kabank.mvc.util.DispatcherServlet;
 
 @WebServlet({"/user.do"})
@@ -50,12 +52,17 @@ public class MemberController extends HttpServlet {
 				System.out.println("==========로그인 성공==========");
 				InitCommand.cmd.setData(member.getId());
 				MemberBean memberwithAccount = KakaoServiceImpl.getInstance().findAccount(member.getId());
+				MemberBean phoneNumber = PhoneServieImpl.getInstance().findPhone(member.getId());
 				if(memberwithAccount==null) {
-					System.out.println("계좌거없는 맴버");
+					System.out.println("계좌가없는 맴버");
 					session.setAttribute("user", member);
 				}else {
-					System.out.println("계좌거있는 맴버");
-					session.setAttribute("user", memberwithAccount);
+					System.out.println("계좌가있는 맴버");
+					if(phoneNumber==null) {
+						session.setAttribute("user", memberwithAccount);
+					}else {
+						session.setAttribute("user", phoneNumber);
+					}
 				}
 				InitCommand.cmd.setDir("bitcamp");
 				InitCommand.cmd.setPage("main");
@@ -89,13 +96,18 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response);
 			System.out.println("==============MEMBER-C : LEAVE OUT===========");	
 			break;
-		case JOIN:
+		case JOIN :
 			System.out.println("==============MEMBER-C : JOIN IN===========");
 			new JoinCommand(request).execute();
 			MemberServiceImpl.getInstance().joinMember();
 			new MoveCommand(request).execute();
 			DispatcherServlet.send(request, response);
 			System.out.println("==============MEMBER-C : JOIN OUT===========");
+		case LOGOUT :
+			session.invalidate();
+			new MoveCommand(request).execute();
+			DispatcherServlet.send(request, response);
+			break;
 		default:
 			break;
 		}
